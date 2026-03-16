@@ -1,0 +1,38 @@
+{% extends "core/base.html" %}
+
+{% block title %}{{ service.name }} | Живые помнят{% endblock %}
+
+{% block content %}
+<section class="page-hero page-hero-small">
+    <div class="container">
+        <div class="reveal" data-reveal="up">
+            <p class="eyebrow">Позиция</p>
+            <h1>{{ service.name }}</h1>
+            <p class="page-lead">{{ service.short_description }}</p>
+        </div>
+    </div>
+</section>
+
+<section class="section">
+    <div class="container service-detail-layout">
+        <div class="service-detail-media reveal parallax" data-reveal="right" data-parallax="12">
+            <img src="{{ service.image.url }}" alt="{{ service.name }}">
+        </div>
+
+        <div class="service-detail-content">
+            <div class="detail-card reveal" data-reveal="up">
+                <p class="card-tag">Описание</p>
+                <h2>О позиции</h2>
+                <p>{{ service.full_description }}</p>
+            </div>
+
+            <div class="detail-card detail-card-accent reveal" data-reveal="up" data-delay="0.08">
+                <p class="card-tag">Стоимость</p>
+                <h2>{{ service.price }} ₽</h2>
+                <p>Финальная цена зависит от объема работ, материала и комплектации. Детали можно уточнить заранее.</p>
+                <a class="button button-primary" href="tel:+79000000000">Уточнить</a>
+            </div>
+        </div>
+    </div>
+</section>
+{% endblock %}

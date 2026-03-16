@@ -1,0 +1,177 @@
+{% extends 'core/base.html' %}
+
+{% block title %}Живые помнят | Мемориальный уход{% endblock %}
+
+{% block content %}
+<section class="hero-section">
+    <div class="container hero-layout">
+        <div class="hero-copy">
+            <div class="reveal" data-reveal="up">
+                <p class="eyebrow">Мемориальный сервис</p>
+                <h1>Уход за территориями, памятниками и мемориальными изделиями.</h1>
+                <p class="hero-text">
+                    Работаем строго по направлениям ухода и благоустройства: памятники, плиты, ограды,
+                    участки и подбор гробов. Без лишних услуг и без тяжелой подачи.
+                </p>
+            </div>
+
+            <div class="hero-actions reveal" data-reveal="up" data-delay="0.08">
+                <a class="button button-primary" href="tel:+79000000000">Обсудить задачу</a>
+                <a class="button button-secondary" href="#services">Смотреть услуги</a>
+            </div>
+
+            <div class="hero-metrics">
+                <div class="metric reveal" data-reveal="up" data-delay="0.04">
+                    <strong>Территории</strong>
+                    <span>уход, очистка, сезонное приведение в порядок</span>
+                </div>
+                <div class="metric reveal" data-reveal="up" data-delay="0.1">
+                    <strong>Изделия</strong>
+                    <span>памятники, плиты, ограды и сопутствующие элементы</span>
+                </div>
+                <div class="metric reveal" data-reveal="up" data-delay="0.16">
+                    <strong>Аккуратно</strong>
+                    <span>спокойная коммуникация и точная работа по запросу</span>
+                </div>
+            </div>
+        </div>
+
+        <div class="hero-panel reveal parallax" data-reveal="left" data-delay="0.14" data-parallax="14">
+            <div class="hero-card">
+                <span class="hero-card-label">Основные направления</span>
+                <ul class="hero-list">
+                    <li>Уход и благоустройство мемориальных участков</li>
+                    <li>Изготовление и подбор памятников, плит и оград</li>
+                    <li>Подбор гробов и сопутствующих изделий</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="section section-soft">
+    <div class="container">
+        <div class="section-heading reveal" data-reveal="up">
+            <p class="eyebrow">Подход</p>
+            <h2>Современная подача без визуального шума.</h2>
+            <p class="section-note">Точные услуги, сдержанный стиль и внимание к состоянию материалов и территории.</p>
+        </div>
+
+        <div class="feature-grid feature-grid-compact">
+            <article class="info-card reveal" data-reveal="up">
+                <span class="info-index">01</span>
+                <h3>Чистая организация</h3>
+                <p>Фокус только на реальных задачах: участок, изделие, установка или уход.</p>
+            </article>
+            <article class="info-card reveal" data-reveal="up" data-delay="0.06">
+                <span class="info-index">02</span>
+                <h3>Аккуратные материалы</h3>
+                <p>Подбираем решения по форме, фактуре и долговечности без перегрузки.</p>
+            </article>
+            <article class="info-card reveal" data-reveal="up" data-delay="0.12">
+                <span class="info-index">03</span>
+                <h3>Понятный результат</h3>
+                <p>Обсуждаем задачу, предлагаем решение и доводим объект до аккуратного состояния.</p>
+            </article>
+        </div>
+    </div>
+</section>
+
+<section class="section editorial-section">
+    <div class="container editorial-layout">
+        <div class="editorial-copy reveal" data-reveal="right">
+            <p class="eyebrow">Что делаем</p>
+            <h2>Работаем с мемориальным пространством как с объектом ухода, формы и долговечности.</h2>
+            <p>
+                Если нужен уход за участком, замена элементов, подбор плиты, ограды или памятника,
+                мы собираем решение без лишней сложности и с понятной визуальной логикой.
+            </p>
+        </div>
+
+        <div class="timeline-card parallax reveal" data-reveal="left" data-delay="0.08" data-parallax="10">
+            <div class="timeline-item">
+                <span>1</span>
+                <div>
+                    <h3>Запрос</h3>
+                    <p>Уточняем, что именно требуется: уход, изделие, замена или оформление участка.</p>
+                </div>
+            </div>
+            <div class="timeline-item">
+                <span>2</span>
+                <div>
+                    <h3>Подбор</h3>
+                    <p>Предлагаем подходящие материалы, формы и объем работ под конкретную задачу.</p>
+                </div>
+            </div>
+            <div class="timeline-item">
+                <span>3</span>
+                <div>
+                    <h3>Результат</h3>
+                    <p>Приводим территорию или изделие в аккуратное, завершенное состояние.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="section" id="services">
+    <div class="container">
+        <div class="section-heading section-heading-row reveal" data-reveal="up">
+            <div>
+                <p class="eyebrow">Услуги</p>
+                <h2>Отдельные направления без лишней перегруженности.</h2>
+            </div>
+            <p class="section-aside">Все разделы собраны вокруг реальных задач по территории и мемориальным изделиям.</p>
+        </div>
+
+        <div class="cards-grid">
+            {% for category in categories %}
+            <article class="service-card service-card-compact reveal" data-reveal="up">
+                <p class="card-tag">Категория</p>
+                <h3>{{ category.name }}</h3>
+                <p>Подбор изделий, работ и решений по этому направлению в одном разделе.</p>
+                <a href="{% url 'category_detail' category.slug %}" class="text-link">Открыть</a>
+            </article>
+            {% empty %}
+            <article class="empty-state reveal" data-reveal="up">
+                <h3>Категории пока не добавлены</h3>
+                <p>Разделы появятся здесь после наполнения сайта.</p>
+            </article>
+            {% endfor %}
+        </div>
+    </div>
+</section>
+
+<section class="section section-contrast">
+    <div class="container">
+        <div class="section-heading section-heading-row reveal" data-reveal="up">
+            <div>
+                <p class="eyebrow">Галерея</p>
+                <h2>Материалы, поверхности и детали исполнения.</h2>
+            </div>
+            <a href="{% url 'gallery' %}" class="button button-dark">Смотреть все</a>
+        </div>
+
+        <div class="gallery-grid gallery-preview-grid">
+            {% for item in gallery|slice:":6" %}
+            <article class="gallery-card reveal parallax" data-reveal="up" data-parallax="8">
+                <img src="{{ item.image.url }}" alt="{{ item.title|default:'Работа из галереи' }}">
+                <div class="gallery-card-body">
+                    <h3>{{ item.title|default:"Работа из галереи" }}</h3>
+                    {% if item.description %}
+                    <p>{{ item.description|truncatewords:12 }}</p>
+                    {% else %}
+                    <p>Пример выполненной работы с аккуратной формой и чистой подачей материала.</p>
+                    {% endif %}
+                </div>
+            </article>
+            {% empty %}
+            <article class="empty-state reveal" data-reveal="up">
+                <h3>Галерея пока пуста</h3>
+                <p>Фотографии работ появятся здесь после добавления материалов.</p>
+            </article>
+            {% endfor %}
+        </div>
+    </div>
+</section>
+{% endblock %}

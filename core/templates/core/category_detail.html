@@ -1,0 +1,63 @@
+{% extends "core/base.html" %}
+
+{% block title %}{{ category.name }} | Живые помнят{% endblock %}
+
+{% block content %}
+<section class="page-hero page-hero-small">
+    <div class="container">
+        <div class="reveal" data-reveal="up">
+            <p class="eyebrow">Категория</p>
+            <h1>{{ category.name }}</h1>
+            <p class="page-lead">Раздел с услугами и изделиями по одному направлению мемориального ухода и благоустройства.</p>
+        </div>
+    </div>
+</section>
+
+<section class="section">
+    <div class="container">
+        {% if subcategories %}
+        <div class="section-heading reveal" data-reveal="up">
+            <p class="eyebrow">Разделы</p>
+            <h2>Смежные направления</h2>
+        </div>
+        <div class="cards-grid cards-grid-small">
+            {% for sub in subcategories %}
+            <a href="{% url 'category_detail' sub.slug %}" class="category-tile reveal" data-reveal="up">
+                <span>Раздел</span>
+                <strong>{{ sub.name }}</strong>
+            </a>
+            {% endfor %}
+        </div>
+        {% endif %}
+
+        <div class="section-heading reveal" data-reveal="up">
+            <p class="eyebrow">Позиции</p>
+            <h2>Доступные услуги и изделия</h2>
+        </div>
+
+        <div class="cards-grid service-list-grid">
+            {% for service in services %}
+            <a href="{% url 'service_detail' service.slug %}" class="service-card reveal" data-reveal="up">
+                <div class="service-media">
+                    <img src="{{ service.image.url }}" alt="{{ service.name }}">
+                </div>
+                <div class="service-content">
+                    <p class="card-tag">Позиция</p>
+                    <h3>{{ service.name }}</h3>
+                    <p>{{ service.short_description|truncatewords:16 }}</p>
+                    <div class="service-footer">
+                        <span class="price">от {{ service.price }} ₽</span>
+                        <span class="text-link">Подробнее</span>
+                    </div>
+                </div>
+            </a>
+            {% empty %}
+            <article class="empty-state reveal" data-reveal="up">
+                <h3>Позиции пока не добавлены</h3>
+                <p>В этой категории еще нет опубликованных предложений.</p>
+            </article>
+            {% endfor %}
+        </div>
+    </div>
+</section>
+{% endblock %}

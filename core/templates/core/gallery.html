@@ -1,0 +1,40 @@
+{% extends "core/base.html" %}
+
+{% block title %}Галерея | Живые помнят{% endblock %}
+
+{% block content %}
+<section class="page-hero page-hero-small">
+    <div class="container">
+        <div class="reveal" data-reveal="up">
+            <p class="eyebrow">Галерея</p>
+            <h1>Материалы, поверхности и выполненные работы.</h1>
+            <p class="page-lead">Подборка примеров по памятникам, плитам, оградам и состоянию мемориальных участков.</p>
+        </div>
+    </div>
+</section>
+
+<section class="section">
+    <div class="container">
+        <div class="gallery-grid gallery-page-grid">
+            {% for item in gallery_items %}
+            <article class="gallery-card gallery-card-large reveal parallax" data-reveal="up" data-parallax="8">
+                <img src="{{ item.image.url }}" alt="{{ item.title|default:'Изображение из галереи' }}">
+                <div class="gallery-card-body">
+                    <h3>{{ item.title|default:"Работа из галереи" }}</h3>
+                    {% if item.description %}
+                    <p>{{ item.description }}</p>
+                    {% else %}
+                    <p>Фрагмент выполненной работы и состояния материала после обработки или установки.</p>
+                    {% endif %}
+                </div>
+            </article>
+            {% empty %}
+            <article class="empty-state reveal" data-reveal="up">
+                <h3>Галерея пока пуста</h3>
+                <p>Фотографии появятся здесь после добавления материалов.</p>
+            </article>
+            {% endfor %}
+        </div>
+    </div>
+</section>
+{% endblock %}
