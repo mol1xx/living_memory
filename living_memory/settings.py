@@ -121,3 +121,4 @@ MEDIA_ROOT = BASE_DIR / 'media'
 
 STATIC_URL = '/static/'
 STATICFILES_DIRS = [BASE_DIR / 'static']
+ALLOWED_HOSTS = ["*"]
